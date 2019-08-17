@@ -3,7 +3,7 @@ package de.ostfale.sbkotlin.sbkotlin.person
 import org.springframework.stereotype.Repository
 
 /**
- * Example for a repository class written in Kotlin
+ * Example for a in-memory repository class written in Kotlin
  * Created :  16.08.2019
  *
  *  @author : Uwe Sauerbrei
@@ -11,8 +11,12 @@ import org.springframework.stereotype.Repository
 @Repository
 class PersonRepository {
 
-    val persons: MutableList<Person> = ArrayList()
+    val persons = ArrayList<Person>()
 
+    /**
+     * Returns the single element matching the given predicate, or `null` if element
+     * was not found or more than one element was found.
+     */
     fun findById(id: Int): Person? {
         return persons.singleOrNull { it.id == id }
     }
@@ -37,6 +41,5 @@ class PersonRepository {
 
     fun removeById(id: Int): Boolean {
         return persons.removeIf { it.id == id }
-
     }
 }
