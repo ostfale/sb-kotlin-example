@@ -21,7 +21,7 @@ class PersonController {
      * Annotation @PathVariable does not require any arguments. The input parameter name is
      * considered to be the same as variable name.
      */
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): Person? = repository.findById(id)
 
     @GetMapping
